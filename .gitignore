@@ -1,0 +1,24 @@
+# Arquivos e pastas de sistema
+.DS_Store
+Thumbs.db
+
+# Pastas de dependências
+node_modules/
+/npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+.env.*
+.local
+.vscode/
+
+# Build e arquivos de output
+/dist/
+/build/
+
+# IDEs
+.idea/
+*.swp
+*.bak
