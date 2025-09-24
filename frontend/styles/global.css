@@ -1,6 +1,6 @@
-@import url('./products/style.css');
-@import url('./cadastro/style.css');
-@import url('./login/style.css');
+@import url('./produtos.css');
+@import url('./cadastro.css');
+@import url('./login.css');
 
 :root {
   /* Paleta Primária */
