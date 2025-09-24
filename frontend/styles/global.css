@@ -1,4 +1,6 @@
 @import url('./products/style.css');
+@import url('./cadastro/style.css');
+@import url('./login/style.css');
 
 :root {
   /* Paleta Primária */
@@ -21,6 +23,12 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .btn {
