@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de produtos</title>
+  <link rel="stylesheet" href="../../styles//global.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h3 class="header-title">Lista de produtos</h3>
+      <button class="btn btn-primary">Adicionar Produto</button>
+    </div>
+    <div class="products">
+      <div class="filters-header">
+        <div class="search-bar-container">
+          <input class="search-bar" type="text" placeholder="Pesquisar produtos..." />
+          <button class="search-bar-button"></button>
+        </div>
+        <div class="filters-status">
+          <label class="select">
+            <select class="select-input">
+              <option value="" disabled selected>Status</option>
+              <option value="1">Ativo</option>
+              <option value="2">Desativado</option>
+              <option value="3">Sem Estoque</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Estoque</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Notebook Dell XPS 13</td>
+            <td>12</td>
+            <td>R$ 7.500,00</td>
+          </tr>
+          <tr>
+            <td>Smartphone Samsung Galaxy S23</td>
+            <td>8</td>
+            <td>R$ 4.200,00</td>
+          </tr>
+          <tr>
+            <td>Fone de Ouvido JBL</td>
+            <td>32</td>
+            <td>R$ 350,00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

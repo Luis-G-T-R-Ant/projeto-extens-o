@@ -1,0 +1,98 @@
+ body {
+   font-family: 'Segoe UI', Arial, sans-serif;
+   background: #f4f6f8;
+   margin: 0;
+   padding: 0;
+ }
+
+ .container {
+   display: flex;
+   flex-direction: column;
+   place-items: flex-start;
+   max-width: 1360px;
+   height: 90dvh;
+   margin: 2em auto;
+   background: transparent;
+   border-radius: var(--radius-sm);
+ }
+
+ .header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: var(--text-color);
+   width: 100%;
+   padding: 12px 0;
+ }
+
+ .header-title {
+   font-size: 1.5em;
+ }
+
+ .products {
+   max-width: 1335px;
+   width: 100%;
+   height: 100vh;
+   background-color: white;
+   padding: 1em 12px;
+   border-radius: var(--radius-md);
+ }
+
+ .filters-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 1.5em;
+   padding: 0 12px;
+ }
+
+ .search-bar-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border: 1px solid #e8e8e8;
+   padding: 8px 12px;
+   border-radius: var(--radius-md);
+   max-width: 260px;
+   width: 100%;
+ }
+
+ .search-bar-container svg {
+   color: var(--color-secondary);
+ }
+
+ .filters-status {
+   width: auto;
+ }
+
+ table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+
+ th,
+ td {
+   padding: 16px 12px;
+   text-align: left;
+ }
+
+ td {
+   font-size: 15px;
+   color: #333;
+   border-bottom: 1px solid #e3e7ed;
+ }
+
+ th {
+   color: var(--text-color);
+   font-weight: normal;
+   font-size: 14px;
+   background-color: #f4f6f8;
+ }
+
+ tr {
+   transition: background 0.2s;
+ }
+
+ tr:hover {
+   background: var(--color-primary-hover);
+ }
