@@ -36,6 +36,31 @@
    border-radius: var(--radius-md);
  }
 
+ .list {
+   display: flex;
+   flex: 1;
+   background: #e3e7ed60;
+   padding: 12px 14px;
+   border-radius: var(--radius-md);
+ }
+
+ .list-item-container {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+ }
+
+ .list-item-container input {
+   width: 20px;
+   height: 20px;
+   border: 1px solid #e3e7ed !important;
+ }
+
+ .list-item-title {
+   font-size: 1em;
+   font-weight: 400;
+ }
+
  .filters-header {
    display: flex;
    align-items: center;
