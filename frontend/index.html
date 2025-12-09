@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chicago Burguer - Sistema de gerenciamento">
+  <meta name="theme-color" content="#008000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Chicago Burguer">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/jpeg" href="img/verde.jpg">
+  <link rel="apple-touch-icon" href="img/verde.jpg">
+  
+  <title>Chicago Burguer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('img/verde.jpg') center/cover no-repeat fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+    }
+    
+    h1 {
+      color: #008000;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    
+    p {
+      color: #555;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    
+    a {
+      display: inline-block;
+      background: #008000;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      margin: 10px;
+    }
+    
+    a:hover {
+      background: #084708;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍔 Chicago Burguer</h1>
+    <p>Bem-vindo ao Sistema de Gerenciamento</p>
+    <a href="pages/login.html">Acessar Login</a>
+    <a href="pages/produtos.html">Ver Produtos</a>
+  </div>
+
+  <script src="js/pwa-register.js"></script>
+</body>
+</html>

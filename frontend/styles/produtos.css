@@ -4,20 +4,19 @@
 
 body {
     background: #f4f6f8;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    /* Centraliza o container na horizontal */
     margin: 90px auto 20px auto; 
     width: 100%;
     max-width: 1360px;
-    /* Remove altura fixa para evitar barra de rolagem desnecessária */
-    /* height: 90dvh; */ 
     background: transparent;
     border-radius: var(--radius-sm);
-    padding: 0 15px; /* Adiciona padding lateral para telas pequenas */
+    padding: 0 15px;
 }
 
 .header {
@@ -27,23 +26,58 @@ body {
     color: var(--text-color);
     width: 100%;
     padding: 12px 0;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .header-title {
-    font-size: 1.8em; /* Aumentado para mais destaque */
+    font-size: 1.8em;
     font-weight: 600;
 }
 
 .products {
     width: 100%;
-    /* Removido max-width fixo para que ocupe o container */
-    /* Removido height: 100vh; */
     background-color: white;
-    padding: 20px 15px; /* Padding interno consistente */
+    padding: 20px 15px;
     border-radius: var(--radius-md);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra suave */
-    flex-grow: 1; /* Permite ocupar o espaço vertical disponível */
-    overflow-x: auto; /* Garante scroll horizontal para a tabela em telas pequenas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 80px auto 15px auto;
+        padding: 0 10px;
+    }
+    
+    .header-title {
+        font-size: 1.4em;
+    }
+    
+    .products {
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 70px auto 10px auto;
+        padding: 0 8px;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header-title {
+        font-size: 1.2em;
+    }
+    
+    .products {
+        padding: 10px 8px;
+    }
 }
 
 /* === FILTROS E PESQUISA === */
@@ -52,10 +86,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 25px; /* Mais espaço */
+    margin-bottom: 25px;
     padding: 0; 
     gap: 20px;
-    flex-wrap: wrap; /* Garante que os filtros quebrem linha se necessário */
+    flex-wrap: wrap;
 }
 
 .search-bar-container {
@@ -65,8 +99,9 @@ body {
     border: 1px solid #e8e8e8;
     padding: 8px 12px;
     border-radius: var(--radius-md);
-    max-width: 300px; /* Ajustado um pouco */
+    max-width: 300px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 /* === ESTILOS PARA CHECKBOXES DE FILTRO (.filters-status) === */
@@ -74,7 +109,7 @@ body {
 #containerFiltrosCategoria {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px; /* Espaço entre os filtros checkbox */
+    gap: 15px;
     align-items: center;
     font-size: 14px;
     color: #555;
@@ -90,6 +125,7 @@ body {
     border-radius: var(--radius-md);
     border: 1px solid #ddd;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 #containerFiltrosCategoria label:hover {
@@ -97,48 +133,79 @@ body {
 }
 
 #containerFiltrosCategoria input[type="checkbox"] {
-    /* Reseta o estilo do checkbox para ficar pequeno e alinhado */
     width: 16px;
     height: 16px;
     margin-right: 8px;
-    /* Estilos do checkbox são normalmente manipulados pelo navegador,
-       mas você pode estilizar a cor de fundo/borda se necessário. */
+}
+
+@media (max-width: 768px) {
+    .filters-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-bar-container {
+        max-width: 100%;
+    }
+    
+    #containerFiltrosCategoria {
+        gap: 10px;
+        font-size: 13px;
+    }
+    
+    #containerFiltrosCategoria label {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .filters-header {
+        gap: 10px;
+    }
+    
+    #containerFiltrosCategoria {
+        gap: 8px;
+    }
+    
+    #containerFiltrosCategoria label {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
 }
 
 /* === ESTILOS DA TABELA === */
 
 .list {
-    display: block; /* Mudar de flex para block para a tabela usar 100% da largura */
-    /* Removido background e padding para evitar bordas desnecessárias */
-    /* background: #e3e7ed60;
-    padding: 12px 14px; */ 
+    display: block;
     border-radius: var(--radius-md);
-    overflow-x: auto; /* Mantido para garantir scroll */
+    overflow-x: auto;
+    width: 100%;
 }
 
 table {
     width: 100%;
-    min-width: 800px; /* Garante que a tabela tenha um tamanho mínimo */
+    min-width: 800px;
     border-collapse: collapse;
 }
 
 th,
 td {
-    padding: 14px 12px; /* Espaçamento ajustado */
+    padding: 14px 12px;
     text-align: left;
 }
 
 td {
     font-size: 15px;
     color: #333;
-    border-bottom: 1px solid #f0f0f0; /* Borda mais suave */
+    border-bottom: 1px solid #f0f0f0;
 }
 
 th {
     color: var(--text-color);
-    font-weight: 500; /* Levemente mais negrito */
+    font-weight: 500;
     font-size: 14px;
-    background-color: #f8f8f8; /* Fundo do cabeçalho levemente mais claro */
+    background-color: #f8f8f8;
     border-bottom: 2px solid #e3e7ed; 
 }
 
@@ -150,7 +217,6 @@ tr:hover {
     background: var(--color-primary-hover);
 }
 
-/* Checkbox dentro da célula da tabela */
 .list-item-container {
     display: flex;
     align-items: center;
@@ -160,30 +226,36 @@ tr:hover {
 .list-item-container input {
     width: 18px;
     height: 18px;
-    /* Você pode adicionar estilização de borda aqui se o seu global.css não estiver aplicando */
 }
 
 .list-item-title {
     font-size: 1em;
-    font-weight: 500; /* Mais destaque para o nome do produto */
+    font-weight: 500;
     color: var(--text-color);
 }
-.products {
-    width: 100%;
-    background-color: white;
-    padding: 20px; /* Mantém padding interno */
-    border-radius: var(--radius-md);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    overflow-x: auto; /* Para scroll horizontal se necessário */
+
+@media (max-width: 768px) {
+    table {
+        min-width: 700px;
+        font-size: 14px;
+    }
+    
+    th,
+    td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
 }
 
-.list table {
-    width: 100%; /* Ocupa toda a largura do container */
-    min-width: unset; /* Remove o min-width que força centralização */
-    border-collapse: collapse;
-}
-
-.list {
-    width: 100%;
-    overflow-x: auto; /* Scroll horizontal caso necessário */
+@media (max-width: 480px) {
+    table {
+        min-width: 600px;
+        font-size: 12px;
+    }
+    
+    th,
+    td {
+        padding: 8px 6px;
+        font-size: 11px;
+    }
 }

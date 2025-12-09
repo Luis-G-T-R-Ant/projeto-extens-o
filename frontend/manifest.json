@@ -1,0 +1,48 @@
+{
+  "name": "Chicago Burguer - Hamburgeria",
+  "short_name": "Chicago Burguer",
+  "description": "Sistema de gerenciamento de produtos e usuários para hamburgeria Chicago Burguer",
+  "start_url": "./pages/login.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#008000",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./img/verde.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["productivity", "business"],
+  "shortcuts": [
+    {
+      "name": "Login",
+      "short_name": "Login",
+      "description": "Acessar o login da aplicação",
+      "url": "./pages/login.html",
+      "icons": [
+        {
+          "src": "./img/verde.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "short_name": "Produtos",
+      "description": "Visualizar lista de produtos",
+      "url": "./pages/produtos.html",
+      "icons": [
+        {
+          "src": "./img/verde.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    }
+  ]
+}
