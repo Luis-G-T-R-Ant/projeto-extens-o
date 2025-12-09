@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Chicago Burguer</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <!-- lado esquerdo-->
+  <div class="left">
+    <img src="img/verde.jpg" alt="Chicago Burguer Logo">
+  </div>
+
+  <!-- lado direito -->
+  <div class="right">
+    <div class="login-container">
+      <header>Login</header>
+      <form method="POST">
+        <div class="input-field">
+          <input type="text" name="usuario" class="input" placeholder="Usuário" required>
+        </div>
+
+        <div class="input-field">
+          <input type="password" name="senha" class="input" placeholder="Senha" required>
+        </div>
+
+        <div class="input-field">
+          <select name="perfil" class="input" required>
+            <option value="" disabled selected>Selecione o perfil</option>
+            <option value="adm">Administrador</option>
+            <option value="funcionario">Funcionário</option>
+          </select>
+        </div>
+
+        <div class="input-field">
+          <input type="submit" class="submit" value="Login">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
