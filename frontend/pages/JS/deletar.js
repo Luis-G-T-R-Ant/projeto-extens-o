@@ -100,3 +100,25 @@ usuariosTableBody.addEventListener("click", async (e) => {
 // INICIALIZA
 // =============================
 document.addEventListener("DOMContentLoaded", carregarUsuarios);
+document.addEventListener("DOMContentLoaded", () => {
+  // Pega o perfil do usuário logado
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+  
+  if (!usuarioLogado) {
+    // Se não estiver logado, redireciona para login
+    alert("Você precisa estar logado para acessar esta página.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  if (usuarioLogado.perfil !== "adm") {
+    // Se não for ADM, impede acesso
+    alert("Acesso negado! Apenas administradores podem acessar esta página.");
+    window.location.href = "produtos.html"; // redireciona para produtos
+    return;
+  }
+
+  // Se for ADM, carrega os usuários normalmente
+  carregarUsuarios();
+});
+
