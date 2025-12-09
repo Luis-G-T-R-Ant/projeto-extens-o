@@ -6,39 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de produtos</title>
   <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/global.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
   <div class="container">
     <div class="header">
       <h3 class="header-title">Lista de produtos</h3>
-      <button class="btn btn-primary">Adicionar Produto</button>
+      <button class="btn btn-primary" onclick="location.href='cadprodutos.html'">Adicionar Produto</button>
     </div>
+
     <div class="products">
       <div class="filters-header">
+
+        <!-- PESQUISAR -->
         <div class="search-bar-container">
-          <input class="search-bar" type="text" placeholder="Pesquisar produtos..." />
-          <button class="search-bar-button"></button>
+          <input id="pesquisa" class="search-bar" type="text" placeh  older="Pesquisar produtos..." />
+          <button class="search-bar-button" onclick="carregarProdutos()"></button>
         </div>
+
+        <!-- FILTRAR -->
         <div class="filters-status">
-          <label class="select">
-            <select class="select-input">
-              <option value="" disabled selected>Status</option>
-              <option value="1">Ativo</option>
-              <option value="2">Desativado</option>
-              <option value="3">Sem Estoque</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <div class="list">
-        <div class="list-item-container">
-          <input type="checkbox" name="product" />
-          <h3 class="list-item-title">Nome do produto</h3>
-        </div>
-      </div>
+          <div id="containerFiltrosCategoria">
+            <p>Carregando filtros...</p>
+          </div>
+        </div>
+
+      <!-- LISTA DE PRODUTOS -->
+      <div id="listaProdutos" class="list"></div>
+
     </div>
   </div>
+
+  <script src="JS/listarprod.js"></script>
 </body>
 
 </html>

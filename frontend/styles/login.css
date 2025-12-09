@@ -1,43 +1,31 @@
 body {
-  height: 100vh;
-  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
-/* Lado esquerdo */
-.left {
-  flex: 1;
+.main-container{
   display: flex;
-  justify-content: center;
+  gap: 1em;
+  justify-content: space-between;
   align-items: center;
-}
-
-.left img {
+  flex-wrap: wrap;
   width: 100%;
 }
 
-/* Lado direito */
-.right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f8f9fa;
+ img {
+  width: fit-content;
+  height: 100dvh;
 }
 
 .login-container {
-  width: 320px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 380px;
 }
 
-.login-container header {
-  font-size: 22px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
 
 .input-field {
   margin-bottom: 15px;
