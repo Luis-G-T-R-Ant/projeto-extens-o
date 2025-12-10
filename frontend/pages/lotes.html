@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Lotes - Chicago Burguer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/global.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <style>
+    .lotes-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--espacamento-lg);
+      padding-top: calc(var(--altura-menu) + 32px);
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: var(--espacamento-xl);
+    }
+
+    .page-header h1 {
+      color: var(--cor-primaria);
+      font-size: var(--tamanho-fonte-xl);
+      margin-bottom: var(--espacamento-sm);
+    }
+
+    .page-header p {
+      color: var(--cor-texto-claro);
+      font-size: var(--tamanho-fonte-base);
+    }
+
+    .filters {
+      background: var(--cor-branco);
+      padding: var(--espacamento-lg);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--sombra-padrao);
+      margin-bottom: var(--espacamento-lg);
+      display: flex;
+      gap: var(--espacamento-md);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filters input,
+    .filters select {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px;
+      border: 2px solid var(--cor-borda);
+      border-radius: var(--border-radius);
+      font-size: var(--tamanho-fonte-base);
+    }
+
+    .filters button {
+      padding: 10px 24px;
+      background: var(--cor-primaria);
+      color: var(--cor-branco);
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transicao);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filters button:hover {
+      background: var(--cor-primaria-hover);
+    }
+
+    .produto-card {
+      background: var(--cor-branco);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--sombra-padrao);
+      margin-bottom: var(--espacamento-lg);
+      overflow: hidden;
+    }
+
+    .produto-header {
+      background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+      color: var(--cor-branco);
+      padding: var(--espacamento-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--espacamento-md);
+    }
+
+    .produto-info h2 {
+      margin: 0;
+      font-size: var(--tamanho-fonte-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .produto-info p {
+      margin: 4px 0 0 0;
+      opacity: 0.9;
+      font-size: var(--tamanho-fonte-sm);
+    }
+
+    .produto-stats {
+      display: flex;
+      gap: var(--espacamento-lg);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: var(--tamanho-fonte-xs);
+      opacity: 0.9;
+    }
+
+    .lotes-list {
+      padding: var(--espacamento-lg);
+    }
+
+    .lote-item {
+      background: var(--cor-fundo);
+      border-radius: var(--border-radius);
+      padding: var(--espacamento-md);
+      margin-bottom: var(--espacamento-md);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--espacamento-md);
+      align-items: center;
+      transition: var(--transicao);
+      border-left: 4px solid transparent;
+    }
+
+    .lote-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .lote-item.status-ok { border-left-color: #4caf50; }
+    .lote-item.status-atencao { border-left-color: #ffc107; }
+    .lote-item.status-critico { border-left-color: #ff9800; }
+    .lote-item.status-vencido { border-left-color: #e53935; }
+
+    .lote-status {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-ok .lote-status { background: #4caf50; }
+    .status-atencao .lote-status { background: #ffc107; }
+    .status-critico .lote-status { background: #ff9800; }
+    .status-vencido .lote-status { background: #e53935; }
+
+    .lote-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--espacamento-sm);
+    }
+
+    .lote-field {
+      font-size: var(--tamanho-fonte-sm);
+    }
+
+    .lote-field strong {
+      color: var(--cor-texto-claro);
+      display: block;
+      font-size: var(--tamanho-fonte-xs);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .lote-field span {
+      color: var(--cor-texto);
+      font-weight: 600;
+    }
+
+    .lote-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      padding: 8px 12px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: var(--tamanho-fonte-sm);
+      transition: var(--transicao);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-movimentar {
+      background: var(--cor-primaria);
+      color: var(--cor-branco);
+    }
+
+    .btn-movimentar:hover {
+      background: var(--cor-primaria-hover);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--espacamento-xl);
+      color: var(--cor-texto-claro);
+    }
+
+    .empty-state i {
+      font-size: 48px;
+      color: var(--cor-borda);
+      margin-bottom: var(--espacamento-md);
+    }
+
+    @media (max-width: 768px) {
+      .lotes-container {
+        padding: var(--espacamento-md);
+        padding-top: calc(var(--altura-menu) + 24px);
+      }
+
+      .produto-stats {
+        width: 100%;
+        justify-content: space-around;
+      }
+
+      .lote-item {
+        grid-template-columns: 1fr;
+        gap: var(--espacamento-sm);
+      }
+
+      .lote-info {
+        grid-template-columns: 1fr;
+      }
+
+      .lote-actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="menu-topo">
+    <button onclick="location.href='login.html'"><i class="fas fa-sign-in-alt"></i> Login</button>
+    <button onclick="location.href='cadastro.html'"><i class="fas fa-user-plus"></i> Cadastrar usuários</button>
+    <button onclick="location.href='deletar.html'"><i class="fas fa-trash-alt"></i> Excluir Usuários</button>
+    <button onclick="location.href='produtos.html'"><i class="fas fa-list"></i> Lista de produtos</button>
+    <button onclick="location.href='cadprodutos.html'"><i class="fas fa-plus-circle"></i> Cadastrar Produtos</button>
+    <button onclick="location.href='deletarprod.html'"><i class="fas fa-minus-circle"></i> Excluir Produtos</button>
+    <button onclick="location.href='relatorio.html'"><i class="fas fa-chart-line"></i> Relatório</button>
+    <button onclick="location.href='movimentacao.html'"><i class="fas fa-exchange-alt"></i> Movimentação</button>
+    <button onclick="location.href='historico.html'"><i class="fas fa-history"></i> Histórico</button>
+    <button onclick="location.href='lotes.html'" style="background: var(--cor-secundaria);"><i class="fas fa-boxes"></i> Lotes</button>
+  </header>
+
+  <div class="lotes-container">
+    <div class="page-header">
+      <h1><i class="fas fa-boxes"></i> Gestão de Lotes</h1>
+      <p>Visualize e gerencie todos os lotes dos seus produtos separados por validade</p>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="searchProduto" placeholder="🔍 Buscar produto...">
+      <select id="filterStatus">
+        <option value="">Todos os Status</option>
+        <option value="OK">✅ OK</option>
+        <option value="ATENCAO">⚠️ Atenção (30 dias)</option>
+        <option value="CRITICO">🔴 Crítico (7 dias)</option>
+        <option value="VENCIDO">❌ Vencido</option>
+      </select>
+      <button onclick="carregarLotes()">
+        <i class="fas fa-sync-alt"></i> Atualizar
+      </button>
+    </div>
+
+    <div id="lotesContainer">
+      <div class="empty-state">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Carregando lotes...</p>
+      </div>
+    </div>
+  </div>
+
+    <script src="JS/sistema-lotes-core.js"></script>
+    <script src="JS/lotes-integrado.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</html>
