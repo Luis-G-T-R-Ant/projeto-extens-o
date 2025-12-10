@@ -1,0 +1,274 @@
+/* ========================================
+   RELATÓRIO - ESTILOS ESPECÍFICOS
+   ======================================== */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--espacamento-lg, 24px);
+  padding-top: calc(var(--altura-menu, 70px) + 32px);
+}
+
+main h2 {
+  color: var(--cor-primaria, #2e7d32);
+  margin-bottom: var(--espacamento-md, 16px);
+  font-size: var(--tamanho-fonte-xl, 24px);
+  text-align: center;
+  font-weight: 700;
+}
+
+#proximas-validade {
+  background: var(--cor-branco, #fff);
+  padding: var(--espacamento-lg, 24px);
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: var(--sombra-padrao, 0 4px 15px rgba(0, 0, 0, 0.1));
+  margin-bottom: var(--espacamento-lg, 24px);
+}
+
+#proximas-validade h3 {
+  color: var(--cor-primaria, #2e7d32);
+  margin-bottom: var(--espacamento-md, 16px);
+  font-size: var(--tamanho-fonte-lg, 18px);
+  font-weight: 600;
+}
+
+#proximas-validade h3 span {
+  color: var(--cor-secundaria, #4caf50);
+  font-weight: 700;
+}
+
+#tabelaVencimento {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#tabelaVencimento p {
+  text-align: center;
+  padding: var(--espacamento-xl, 32px);
+  color: var(--cor-texto-claro, #555);
+  font-size: var(--tamanho-fonte-base, 14px);
+}
+
+#tabelaVencimento table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+#tabelaVencimento thead {
+  background: var(--cor-primaria, #2e7d32);
+  color: var(--cor-branco, #fff);
+}
+
+#tabelaVencimento th {
+  padding: var(--espacamento-md, 16px);
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: var(--tamanho-fonte-sm, 13px);
+  letter-spacing: 0.5px;
+}
+
+#tabelaVencimento td {
+  padding: var(--espacamento-md, 16px);
+  border-bottom: 1px solid var(--cor-borda, #e0e0e0);
+  font-size: var(--tamanho-fonte-base, 14px);
+  color: var(--cor-texto, #333);
+}
+
+#tabelaVencimento tbody tr {
+  transition: var(--transicao, 0.3s ease);
+}
+
+#tabelaVencimento tbody tr:hover {
+  background-color: rgba(46, 125, 50, 0.05);
+}
+
+/* Destaque para itens próximos da validade */
+#tabelaVencimento tbody tr {
+  position: relative;
+}
+
+#tabelaVencimento tbody tr::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #ff9800, #ff5722);
+  opacity: 0.7;
+}
+
+/* ========================================
+   ESTATÍSTICAS (OPCIONAL)
+   ======================================== */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espacamento-lg, 24px);
+  margin-bottom: var(--espacamento-lg, 24px);
+}
+
+.stat-card {
+  background: var(--cor-branco, #fff);
+  padding: var(--espacamento-lg, 24px);
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: var(--sombra-padrao, 0 4px 15px rgba(0, 0, 0, 0.1));
+  text-align: center;
+  transition: var(--transicao, 0.3s ease);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h4 {
+  color: var(--cor-texto-claro, #555);
+  font-size: var(--tamanho-fonte-base, 14px);
+  margin-bottom: var(--espacamento-sm, 8px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card .stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--cor-primaria, #2e7d32);
+  line-height: 1;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET
+   ======================================== */
+@media (max-width: 768px) {
+  main {
+    padding: var(--espacamento-md, 16px);
+    padding-top: calc(var(--altura-menu, 80px) + 24px);
+  }
+
+  main h2 {
+    font-size: var(--tamanho-fonte-lg, 18px);
+  }
+
+  #proximas-validade {
+    padding: var(--espacamento-md, 16px);
+  }
+
+  #proximas-validade h3 {
+    font-size: var(--tamanho-fonte-md, 16px);
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: var(--espacamento-md, 16px);
+  }
+
+  /* Tabela responsiva com data-label */
+  #tabelaVencimento table thead {
+    display: none;
+  }
+
+  #tabelaVencimento table tbody tr {
+    display: block;
+    margin-bottom: var(--espacamento-md, 16px);
+    border: 2px solid var(--cor-borda, #e0e0e0);
+    border-radius: var(--border-radius, 8px);
+    background: var(--cor-branco, #fff);
+    padding-left: 8px;
+  }
+
+  #tabelaVencimento table tbody tr::before {
+    left: 0;
+    border-top-left-radius: var(--border-radius, 8px);
+    border-bottom-left-radius: var(--border-radius, 8px);
+  }
+
+  #tabelaVencimento table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--espacamento-sm, 8px) var(--espacamento-md, 16px);
+    border: none;
+    text-align: right;
+  }
+
+  #tabelaVencimento table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--cor-primaria, #2e7d32);
+    margin-right: var(--espacamento-md, 16px);
+    text-align: left;
+    flex: 1;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - MOBILE
+   ======================================== */
+@media (max-width: 480px) {
+  main {
+    padding: var(--espacamento-sm, 8px);
+    padding-top: calc(var(--altura-menu, 90px) + 16px);
+  }
+
+  main h2 {
+    font-size: var(--tamanho-fonte-md, 16px);
+    margin-bottom: var(--espacamento-sm, 8px);
+  }
+
+  #proximas-validade {
+    padding: var(--espacamento-sm, 8px);
+    margin-bottom: var(--espacamento-md, 16px);
+  }
+
+  #proximas-validade h3 {
+    font-size: var(--tamanho-fonte-base, 14px);
+    margin-bottom: var(--espacamento-sm, 8px);
+  }
+
+  #tabelaVencimento table {
+    min-width: 100%;
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+
+  #tabelaVencimento table tbody td {
+    padding: 6px var(--espacamento-sm, 8px);
+    font-size: var(--tamanho-fonte-xs, 12px);
+  }
+
+  #tabelaVencimento p {
+    padding: var(--espacamento-lg, 24px);
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+
+  .stat-card {
+    padding: var(--espacamento-md, 16px);
+  }
+
+  .stat-card h4 {
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+
+  .stat-card .stat-value {
+    font-size: 28px;
+  }
+}
+
+/* ========================================
+   IMPRESSÃO
+   ======================================== */
+@media print {
+  main {
+    padding: var(--espacamento-md, 16px);
+  }
+
+  #tabelaVencimento table {
+    page-break-inside: avoid;
+  }
+
+  #tabelaVencimento tbody tr::before {
+    display: none;
+  }
+}

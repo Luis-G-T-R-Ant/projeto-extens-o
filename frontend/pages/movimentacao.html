@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Movimentação de itens - remover unidades sem deletar produtos">
+  <meta name="theme-color" content="#008000">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/movimentacao.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Movimentação de Itens - Chicago Burguer</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ⭐ MENU SUPERIOR -->
+  <header class="menu-topo">
+    <button onclick="location.href='login.html'"><i class="fas fa-sign-in-alt"></i> Login</button>
+    <button onclick="location.href='cadastro.html'"><i class="fas fa-user-plus"></i> Cadastrar usuários</button>
+    <button onclick="location.href='deletar.html'"><i class="fas fa-trash-alt"></i> Excluir Usuários</button>
+    <button onclick="location.href='produtos.html'"><i class="fas fa-list"></i> Lista de produtos</button>
+    <button onclick="location.href='cadprodutos.html'"><i class="fas fa-plus-circle"></i> Cadastrar Produtos</button>
+    <button onclick="location.href='deletarprod.html'"><i class="fas fa-minus-circle"></i> Excluir Produtos</button>
+    <button onclick="location.href='relatorio.html'"><i class="fas fa-chart-line"></i> Relatório</button>
+    <button onclick="location.href='movimentacao.html'"><i class="fas fa-exchange-alt"></i> Movimentação</button>
+    <button onclick="location.href='historico.html'"><i class="fas fa-history"></i> Histórico</button>
+  </header>
+
+  <main class="mov-panel">
+    <h2 style="color:#2e7d32; margin-top:0; margin-bottom:16px;">Movimentação de Itens</h2>
+    
+    <form id="formMovimentacao">
+      <!-- Seletor de Produto -->
+      <div class="form-group">
+        <label for="insumoSelect">Produto *</label>
+        <select id="insumoSelect" required>
+          <option value="">Selecione um produto...</option>
+        </select>
+      </div>
+
+      <!-- Exibir quantidade atual -->
+      <div class="form-group">
+        <label>Quantidade atual:</label>
+        <p id="qtdAtual" style="font-size: 16px; color: #2e7d32; font-weight: 600; margin: 0;">—</p>
+      </div>
+
+      <!-- Quantidade a remover -->
+      <div class="form-group">
+        <label for="quantidadeRemover">Quantidade a remover *</label>
+        <input type="number" id="quantidadeRemover" min="1" step="1" required placeholder="Ex: 5">
+      </div>
+
+      <!-- Motivo da movimentação -->
+      <div class="form-group">
+        <label for="tipoMovimentacao">Tipo de movimentação *</label>
+        <select id="tipoMovimentacao" required>
+          <option value="">Selecione um tipo...</option>
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+          <option value="ajuste">Ajuste</option>
+          <option value="transferencia">Transferência</option>
+          <option value="devolucao">Devolução</option>
+        </select>
+      </div>
+
+      <!-- Botões -->
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-check-circle"></i> Registrar Movimentação
+        </button>
+        <button type="reset" class="btn btn-secondary">
+          <i class="fas fa-redo"></i> Limpar
+        </button>
+      </div>
+    </form>
+
+    <!-- Feedback -->
+    <div id="feedback" style="display:none; margin-top:20px; padding:12px; border-radius:8px; text-align:center; font-weight:500;"></div>
+  </main>
+
+  <script type="module" src="JS/movimentacao.js"></script>
+  <script src="../js/pwa-register.js"></script>
+</body>
+</html>

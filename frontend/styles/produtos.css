@@ -3,101 +3,364 @@
    ======================================= */
 
 body {
-    background: #f4f6f8;
-    margin: 0;
-    padding: 0;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    margin: 90px auto 20px auto; 
-    width: 100%;
-    max-width: 1360px;
-    background: transparent;
-    border-radius: var(--radius-sm);
-    padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  margin: 90px auto 20px auto;
+  width: 100%;
+  max-width: 1360px;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--text-color);
-    width: 100%;
-    padding: 12px 0;
-    flex-wrap: wrap;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-color);
+  width: 100%;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .header-title {
-    font-size: 1.8em;
-    font-weight: 600;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .products {
-    width: 100%;
-    background-color: white;
-    padding: 20px 15px;
-    border-radius: var(--radius-md);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    flex-grow: 1;
-    overflow-x: auto;
+  width: 100%;
+  background-color: white;
+  padding: 20px 15px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  overflow-x: auto;
+  border-radius: 8px;
 }
+
+/* ===================================
+   RESPONSIVIDADE - TABLETS (769px - 1024px)
+   =================================== */
+
+@media (max-width: 1024px) {
+  .container {
+    margin: 85px auto 18px auto;
+    padding: 0 12px;
+  }
+
+  .header-title {
+    font-size: 1.6em;
+    font-weight: 700;
+  }
+
+  .products {
+    padding: 18px 12px;
+  }
+}
+
+/* ===================================
+   RESPONSIVIDADE - TABLETS PEQUENOS (481px - 768px)
+   =================================== */
 
 @media (max-width: 768px) {
-    .container {
-        margin: 80px auto 15px auto;
-        padding: 0 10px;
-    }
-    
-    .header-title {
-        font-size: 1.4em;
-    }
-    
-    .products {
-        padding: 15px 10px;
-    }
+  .container {
+    margin: 80px auto 15px auto;
+    padding: 0 10px;
+  }
+
+  .header-title {
+    font-size: 1.4em;
+    font-weight: 700;
+  }
+
+  .products {
+    padding: 15px 10px;
+  }
 }
 
+/* ===================================
+   RESPONSIVIDADE - CELULARES (até 480px)
+   =================================== */
+
 @media (max-width: 480px) {
-    .container {
-        margin: 70px auto 10px auto;
-        padding: 0 8px;
-    }
-    
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .header-title {
-        font-size: 1.2em;
-    }
-    
-    .products {
-        padding: 10px 8px;
-    }
+  .container {
+    margin: 70px auto 10px auto;
+    padding: 0 8px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-title {
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  .products {
+    padding: 10px 8px;
+  }
 }
 
 /* === FILTROS E PESQUISA === */
 
 .filters-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-    padding: 0; 
-    gap: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding: 0;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .search-bar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #e8e8e8;
-    padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e8e8e8;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  background: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-bar-container:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 128, 0, 0.1);
+}
+
+/* === ESTILOS PARA CHECKBOXES DE FILTRO === */
+
+#containerFiltrosCategoria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  padding: 5px 0;
+}
+
+#containerFiltrosCategoria label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: #f4f6f8;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid #ddd;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+#containerFiltrosCategoria label:hover {
+  background: #e9ecef;
+  border-color: var(--color-primary);
+}
+
+#containerFiltrosCategoria input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+/* ===================================
+   RESPONSIVIDADE FILTROS
+   =================================== */
+
+@media (max-width: 1024px) {
+  .filters-header {
+    gap: 15px;
+  }
+
+  #containerFiltrosCategoria {
+    gap: 12px;
+  }
+
+  #containerFiltrosCategoria label {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar-container {
+    max-width: 100%;
+  }
+
+  #containerFiltrosCategoria {
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  #containerFiltrosCategoria label {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters-header {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  #containerFiltrosCategoria {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  #containerFiltrosCategoria label {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
+
+/* === ESTILOS DA TABELA === */
+
+.list {
+  display: block;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+td {
+  font-size: 15px;
+  color: #333;
+}
+
+th {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 14px;
+  background-color: #f8f8f8;
+  border-bottom: 2px solid #e3e7ed;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tr {
+  transition: background 0.2s ease;
+}
+
+tr:hover {
+  background: var(--color-primary-hover);
+}
+
+.list-item-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.list-item-container input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.list-item-title {
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* ===================================
+   RESPONSIVIDADE TABELAS
+   =================================== */
+
+@media (max-width: 1024px) {
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 11px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  table {
+    min-width: 100%;
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  th {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    min-width: 100%;
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  th {
+    font-size: 10px;
+  }
+
+  .list-item-container input {
+    width: 16px;
+    height: 16px;
+  }
+
+}
+
     border-radius: var(--radius-md);
     max-width: 300px;
     width: 100%;
@@ -105,157 +368,3 @@ body {
 }
 
 /* === ESTILOS PARA CHECKBOXES DE FILTRO (.filters-status) === */
-
-#containerFiltrosCategoria {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-    font-size: 14px;
-    color: #555;
-    padding: 5px 0;
-}
-
-#containerFiltrosCategoria label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    background: #f4f6f8;
-    padding: 8px 12px;
-    border-radius: var(--radius-md);
-    border: 1px solid #ddd;
-    transition: all 0.2s;
-    white-space: nowrap;
-}
-
-#containerFiltrosCategoria label:hover {
-    background: #e9ecef;
-}
-
-#containerFiltrosCategoria input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-}
-
-@media (max-width: 768px) {
-    .filters-header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .search-bar-container {
-        max-width: 100%;
-    }
-    
-    #containerFiltrosCategoria {
-        gap: 10px;
-        font-size: 13px;
-    }
-    
-    #containerFiltrosCategoria label {
-        padding: 6px 10px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .filters-header {
-        gap: 10px;
-    }
-    
-    #containerFiltrosCategoria {
-        gap: 8px;
-    }
-    
-    #containerFiltrosCategoria label {
-        padding: 5px 8px;
-        font-size: 11px;
-    }
-}
-
-/* === ESTILOS DA TABELA === */
-
-.list {
-    display: block;
-    border-radius: var(--radius-md);
-    overflow-x: auto;
-    width: 100%;
-}
-
-table {
-    width: 100%;
-    min-width: 800px;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    padding: 14px 12px;
-    text-align: left;
-}
-
-td {
-    font-size: 15px;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-th {
-    color: var(--text-color);
-    font-weight: 500;
-    font-size: 14px;
-    background-color: #f8f8f8;
-    border-bottom: 2px solid #e3e7ed; 
-}
-
-tr {
-    transition: background 0.2s;
-}
-
-tr:hover {
-    background: var(--color-primary-hover);
-}
-
-.list-item-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-}
-
-.list-item-container input {
-    width: 18px;
-    height: 18px;
-}
-
-.list-item-title {
-    font-size: 1em;
-    font-weight: 500;
-    color: var(--text-color);
-}
-
-@media (max-width: 768px) {
-    table {
-        min-width: 700px;
-        font-size: 14px;
-    }
-    
-    th,
-    td {
-        padding: 10px 8px;
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    table {
-        min-width: 600px;
-        font-size: 12px;
-    }
-    
-    th,
-    td {
-        padding: 8px 6px;
-        font-size: 11px;
-    }
-}

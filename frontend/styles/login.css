@@ -1,18 +1,14 @@
+/* ============================================
+   LOGIN PAGE - RESPONSIVE DESIGN
+   ============================================ */
+
 body {
   margin: 0;
   padding: 0;
+  background: #f8f9fa;
 }
 
-@media (max-width: 768px) {
-  body {
-    background-image: url('../img/verde.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-  }
-}
-
-.main-container{
+.main-container {
   display: flex;
   gap: 1em;
   justify-content: space-between;
@@ -20,6 +16,7 @@ body {
   flex-wrap: wrap;
   width: 100%;
   min-height: 100vh;
+  padding: 0;
 }
 
 img {
@@ -39,38 +36,86 @@ img {
   max-width: 380px;
   width: 100%;
   padding: 20px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
+
+/* ===================================
+   RESPONSIVIDADE - DESKTOPS (1024px+)
+   =================================== */
 
 @media (max-width: 1024px) {
   img {
     height: 80vh;
     min-width: 200px;
   }
+
+  .login-container {
+    max-width: 360px;
+    padding: 20px;
+  }
 }
 
+/* ===================================
+   RESPONSIVIDADE - TABLETS PEQUENOS (481px - 768px)
+   Layout vertical com imagem escondida
+   =================================== */
+
 @media (max-width: 768px) {
+  body {
+    background-image: url('../img/verde.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
   .main-container {
     flex-direction: column;
     min-height: auto;
+    padding: 0;
+    gap: 0;
   }
-  
+
   img {
     display: none;
   }
-  
+
   .login-container {
     max-width: 100%;
-    padding: 15px;
+    padding: 20px;
     order: -1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
+
+/* ===================================
+   RESPONSIVIDADE - CELULARES (até 480px)
+   =================================== */
 
 @media (max-width: 480px) {
   .login-container {
-    padding: 10px;
+    padding: 15px;
+    max-width: 100%;
   }
 }
 
+/* ===================================
+   RESPONSIVIDADE - CELULARES MUITO PEQUENOS (<360px)
+   =================================== */
+
+@media (max-width: 360px) {
+  .login-container {
+    padding: 12px;
+  }
+}
+
+/* ===================================
+   FORMULÁRIO DE LOGIN
+   =================================== */
 
 .input-field {
   margin-bottom: 15px;
@@ -79,12 +124,26 @@ img {
 .input {
   height: 45px;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 0 15px;
   font-size: 14px;
   color: #333;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #198754;
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.1);
+}
+
+.input:disabled {
+  background: #f0f0f0;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .submit {
@@ -96,12 +155,28 @@ img {
   background: #198754;
   color: white;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
 }
 
 .submit:hover {
   background: #157347;
+  transform: translateY(-2px);
 }
+
+.submit:active {
+  transform: translateY(0);
+}
+
+.submit:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ===================================
+   RESPONSIVIDADE INPUTS - CELULARES
+   =================================== */
 
 @media (max-width: 480px) {
   .input {
@@ -109,9 +184,25 @@ img {
     font-size: 13px;
     padding: 0 12px;
   }
-  
+
   .submit {
     height: 40px;
     font-size: 14px;
+  }
+
+  .input-field {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .input {
+    height: 38px;
+    font-size: 12px;
+  }
+
+  .submit {
+    height: 38px;
+    font-size: 13px;
   }
 }

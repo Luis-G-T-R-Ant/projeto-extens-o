@@ -1,0 +1,189 @@
+/* ========================================
+   MOVIMENTAÇÃO - ESTILOS ESPECÍFICOS
+   ======================================== */
+
+.mov-panel {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--espacamento-lg, 24px);
+  padding-top: calc(var(--altura-menu, 70px) + 32px);
+}
+
+.mov-panel h2 {
+  color: var(--cor-primaria, #2e7d32);
+  margin-top: 0;
+  margin-bottom: var(--espacamento-md, 16px);
+  font-size: var(--tamanho-fonte-xl, 24px);
+  text-align: center;
+}
+
+#formMovimentacao {
+  background: var(--cor-branco, #fff);
+  padding: var(--espacamento-xl, 32px);
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: var(--sombra-padrao, 0 4px 15px rgba(0, 0, 0, 0.1));
+  max-width: 100%;
+  margin: 0;
+}
+
+#formMovimentacao .form-group {
+  margin-bottom: var(--espacamento-lg, 24px);
+}
+
+#formMovimentacao label {
+  display: block;
+  font-weight: 600;
+  color: var(--cor-texto, #333);
+  margin-bottom: 8px;
+  font-size: var(--tamanho-fonte-base, 14px);
+}
+
+#formMovimentacao select,
+#formMovimentacao input {
+  width: 100%;
+  padding: 12px var(--espacamento-md, 16px);
+  border: 2px solid var(--cor-borda, #e0e0e0);
+  border-radius: var(--border-radius, 8px);
+  font-size: var(--tamanho-fonte-base, 14px);
+  transition: var(--transicao, 0.3s ease);
+}
+
+#formMovimentacao select:focus,
+#formMovimentacao input:focus {
+  outline: none;
+  border-color: var(--cor-primaria, #2e7d32);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+#qtdAtual {
+  font-size: var(--tamanho-fonte-md, 16px);
+  color: var(--cor-primaria, #2e7d32);
+  font-weight: 600;
+  margin: 0;
+  padding: var(--espacamento-sm, 8px) 0;
+}
+
+.form-buttons {
+  display: flex;
+  gap: var(--espacamento-md, 16px);
+  margin-top: var(--espacamento-lg, 24px);
+}
+
+.form-buttons .btn {
+  flex: 1;
+  padding: 12px var(--espacamento-lg, 24px);
+  font-size: var(--tamanho-fonte-md, 16px);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius, 8px);
+  cursor: pointer;
+  transition: var(--transicao, 0.3s ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacamento-sm, 8px);
+}
+
+.form-buttons .btn-primary {
+  background: var(--cor-primaria, #2e7d32);
+  color: var(--cor-branco, #fff);
+}
+
+.form-buttons .btn-primary:hover {
+  background: var(--cor-primaria-hover, #1b5e20);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+.form-buttons .btn-secondary {
+  background: #757575;
+  color: var(--cor-branco, #fff);
+}
+
+.form-buttons .btn-secondary:hover {
+  background: #616161;
+  transform: translateY(-2px);
+}
+
+#feedback {
+  display: none;
+  margin-top: var(--espacamento-lg, 24px);
+  padding: var(--espacamento-md, 16px);
+  border-radius: var(--border-radius, 8px);
+  text-align: center;
+  font-weight: 500;
+  font-size: var(--tamanho-fonte-base, 14px);
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET
+   ======================================== */
+@media (max-width: 768px) {
+  .mov-panel {
+    padding: var(--espacamento-md, 16px);
+    padding-top: calc(var(--altura-menu, 80px) + 24px);
+  }
+
+  .mov-panel h2 {
+    font-size: var(--tamanho-fonte-lg, 18px);
+  }
+
+  #formMovimentacao {
+    padding: var(--espacamento-lg, 24px);
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons .btn {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - MOBILE
+   ======================================== */
+@media (max-width: 480px) {
+  .mov-panel {
+    padding: var(--espacamento-sm, 8px);
+    padding-top: calc(var(--altura-menu, 90px) + 16px);
+  }
+
+  .mov-panel h2 {
+    font-size: var(--tamanho-fonte-md, 16px);
+    margin-bottom: var(--espacamento-sm, 8px);
+  }
+
+  #formMovimentacao {
+    padding: var(--espacamento-md, 16px);
+  }
+
+  #formMovimentacao .form-group {
+    margin-bottom: var(--espacamento-md, 16px);
+  }
+
+  #formMovimentacao label {
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+
+  #formMovimentacao select,
+  #formMovimentacao input {
+    padding: 10px var(--espacamento-sm, 8px);
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+
+  #qtdAtual {
+    font-size: var(--tamanho-fonte-base, 14px);
+  }
+
+  .form-buttons .btn {
+    padding: 10px var(--espacamento-md, 16px);
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+
+  #feedback {
+    padding: var(--espacamento-sm, 8px);
+    font-size: var(--tamanho-fonte-sm, 13px);
+  }
+}

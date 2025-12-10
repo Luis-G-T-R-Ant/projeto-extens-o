@@ -13,6 +13,7 @@
   <link rel="icon" type="image/png" href="../img/verde.jpg">
   <link rel="apple-touch-icon" href="../img/verde.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../styles/global.css">
   
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <title>Gerenciamento de Usuários</title>
@@ -24,6 +25,9 @@
     <button onclick="location.href='produtos.html'"><i class="fas fa-list"></i> Lista de produtos</button>
     <button onclick="location.href='cadprodutos.html'"><i class="fas fa-plus-circle"></i> Cadastrar Produtos</button>
     <button onclick="location.href='deletarprod.html'"><i class="fas fa-minus-circle"></i> Excluir Produtos</button>
+    <button onclick="location.href='relatorio.html'"><i class="fas fa-chart-line"></i> Relatório</button>
+    <button onclick="location.href='movimentacao.html'"><i class="fas fa-exchange-alt"></i> Movimentação</button>
+    <button onclick="location.href='historico.html'"><i class="fas fa-history"></i> Histórico</button>
   </header>
 
 </head>
@@ -113,51 +117,53 @@ tr:hover {
 .table-container {
   overflow-x: auto;
 }
-/* ⭐ MENU SUPERIOR */
-.menu-topo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(6px);
 
-  display: flex;
-  justify-content: flex-start; /* ⬅ Agora vai para a esquerda */
-  gap: 10px;
+@media (max-width: 768px) {
+  body {
+    padding: 80px 15px 20px 15px;
+  }
 
-  padding: 10px 15px;
-  z-index: 10;
-  border-bottom: 1px solid #ddd;
+  h2 {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .delete-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
 }
 
-.menu-topo button {
-  background: #198754;
-  color: white;
-  border: none;
+@media (max-width: 480px) {
+  body {
+    padding: 100px 10px 10px 10px;
+  }
 
-  padding: 6px 12px; /* 🔹 Botões menores */
-  border-radius: 6px;
-  font-size: 13px; /* 🔹 Fonte menor */
+  h2 {
+    font-size: 16px;
+    margin-top: 15px;
+  }
 
-  cursor: pointer;
-  font-weight: 500;
+  table {
+    font-size: 10px;
+  }
 
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  th, td {
+    padding: 6px;
+  }
 
-  transition: 0.3s;
+  .delete-btn {
+    padding: 3px 6px;
+    font-size: 9px;
+  }
 }
-
-.menu-topo button:hover {
-  background: #157347;
-}
-
-/* Afastar o formulário do menu */
-form {
-  margin-top: 70px; /* Ajustei para ficar proporcional */
-}
-
 
 </style>

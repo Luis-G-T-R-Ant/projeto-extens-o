@@ -133,12 +133,12 @@
                         <div class="list-item-container"> 
                         </div>
                     </td>
-                    <td><p class="list-item-title">${insumo.nome}</p></td>
-                    <td>${nomeCategoria}</td>
-                    <td>${insumo.quantidade}</td>
-                    <td>${insumo.unidade_medida}</td>
-                    <td>R$ ${precoFormatado}</td>
-                    <td>${validadeFormatada}</td>
+                        <td data-label="Produto">${insumo.nome}</td>
+                        <td data-label="Categoria">${nomeCategoria}</td>
+                        <td data-label="Quantidade">${insumo.quantidade}</td>
+                        <td data-label="Unidade">${insumo.unidade_medida}</td>
+                        <td data-label="Preço Unitário">R$ ${precoFormatado}</td>
+                        <td data-label="Validade">${validadeFormatada}</td>
                 </tr>
             `;
         });

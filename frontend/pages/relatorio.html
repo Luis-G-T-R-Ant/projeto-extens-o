@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Relatórios - itens próximos da validade e estoque baixo">
+  <meta name="theme-color" content="#008000">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/relatorio.css">
+  <title>Relatórios - Chicago Burguer</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ⭐ MENU SUPERIOR (mesmo do cadastro/cadprodutos) -->
+  <header class="menu-topo">
+    <button onclick="location.href='login.html'"><i class="fas fa-sign-in-alt"></i> Login</button>
+    <button onclick="location.href='cadastro.html'"><i class="fas fa-user-plus"></i> Cadastrar usuários</button>
+    <button onclick="location.href='deletar.html'"><i class="fas fa-trash-alt"></i> Excluir Usuários</button>
+    <button onclick="location.href='produtos.html'"><i class="fas fa-list"></i> Lista de produtos</button>
+    <button onclick="location.href='cadprodutos.html'"><i class="fas fa-plus-circle"></i> Cadastrar Produtos</button>
+    <button onclick="location.href='deletarprod.html'><i class="fas fa-minus-circle"></i> Excluir Produtos</button>
+    <button onclick="location.href='relatorio.html'><i class="fas fa-chart-line"></i> Relatório</button>
+    <button onclick="location.href='movimentacao.html'"><i class="fas fa-exchange-alt"></i> Movimentação</button>
+    <button onclick="location.href='historico.html'"><i class="fas fa-history"></i> Histórico</button>
+  </header>
+
+  <main style="padding: 90px 20px 40px 20px; max-width:1100px; margin:0 auto;">
+    <h2 style="color:#2e7d32; margin-bottom:16px;">Relatórios</h2>
+
+    <section id="proximas-validade">
+      <h3>Itens próximos da validade (próximos <span id="diasFiltro">30</span> dias)</h3>
+      <div id="tabelaVencimento">Carregando...</div>
+    </section>
+  </main>
+
+  <script type="module" src="JS/relatorio.js"></script>
+  <script src="../js/pwa-register.js"></script>
+</body>
+</html>
