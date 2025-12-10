@@ -30,7 +30,7 @@
       text-align: center;
       position: relative;
       z-index: 1;
-      margin-top: 60px; /* Espaço para o menu */
+      margin-top: 60px;
     }
 
     h1 {
@@ -67,10 +67,10 @@
     /* Correção do Ícone Centralizado */
     .form-group i.icon {
       position: absolute;
-      top: 37px; /* Ajuste fino baseado na altura do label + input */
+      top: 37px;
       right: 15px;
       color: #aaa;
-      pointer-events: none; /* O clique passa através do ícone */
+      pointer-events: none;
     }
 
     /* Botão */
@@ -92,20 +92,94 @@
       background: #157347;
     }
 
+    .submit:active {
+      transform: scale(0.98);
+    }
+
     /* Focus */
     input:focus, select:focus {
       outline: none;
       border-color: #157347;
       box-shadow: 0 0 5px rgba(21, 115, 71, 0.5);
     }
+
+    /* Área de lotes existentes */
+    #lotesExistentes {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      text-align: left;
+      display: none;
+    }
+
+    /* Loading overlay */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loading-overlay.active {
+      display: flex;
+    }
+
+    .loading-spinner {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .loading-spinner i {
+      font-size: 40px;
+      color: #2e7d32;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      form {
+        max-width: 100%;
+        margin: 80px 20px 20px 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      input, select {
+        height: 40px;
+        font-size: 13px;
+      }
+
+      .submit {
+        height: 40px;
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
- <header class="menu-topo">
+  <!-- MENU SUPERIOR -->
+  <header class="menu-topo">
     <button onclick="location.href='login.html'"><i class="fas fa-sign-in-alt"></i> Login</button>
-     <button onclick="location.href='cadastro.html'"><i class="fas fa-user-plus"></i> Cadastrar usuários</button>
+    <button onclick="location.href='cadastro.html'"><i class="fas fa-user-plus"></i> Cadastrar usuários</button>
     <button onclick="location.href='deletar.html'"><i class="fas fa-trash-alt"></i> Excluir Usuários</button>
     <button onclick="location.href='produtos.html'"><i class="fas fa-list"></i> Lista de produtos</button>
     <button onclick="location.href='cadprodutos.html'"><i class="fas fa-plus-circle"></i> Cadastrar Produtos</button>
@@ -113,34 +187,40 @@
     <button onclick="location.href='relatorio.html'"><i class="fas fa-chart-line"></i> Relatório</button>
     <button onclick="location.href='movimentacao.html'"><i class="fas fa-exchange-alt"></i> Movimentação</button>
     <button onclick="location.href='historico.html'"><i class="fas fa-history"></i> Histórico</button>
+    <button onclick="location.href='lotes.html'"><i class="fas fa-boxes"></i> Lotes</button>
   </header>
 
   <img class="background" src="../img/verde diferente.jpg" alt="Fundo">
 
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+      <i class="fas fa-spinner"></i>
+      <p style="margin-top: 15px; color: #2e7d32; font-weight: 600;">Salvando...</p>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO -->
   <form id="formProdutos">
-    <h1>Cadastro de Produtos</h1>
+    <h1>📦 Cadastro de Produtos</h1>
 
     <div class="form-group">
-      <label for="nome">Nome do Produto:</label>
+      <label for="nome">Nome do Produto <span style="color: red;">*</span></label>
       <input type="text" id="nome" list="produtosList" required autocomplete="off">
       <datalist id="produtosList"></datalist>
       <i class="fas fa-tag icon"></i>
     </div>
 
     <div class="form-group">
-      <label for="categoria">Categoria:</label>
+      <label for="categoria">Categoria <span style="color: red;">*</span></label>
       <select id="categoria" name="categoria" required>
         <option value="" disabled selected>Selecione a categoria</option>
-        <option value="bebidas">Bebidas</option>
-        <option value="perecivel">Perecível</option>
-        <option value="nao_perecivel">Não Perecível</option>
-        <option value="limpeza">Produto de Limpeza</option>
       </select>
       <i class="fas fa-list icon"></i>
     </div>
 
     <div class="form-group">
-      <label for="unidade">Unidade de Medida:</label>
+      <label for="unidade">Unidade de Medida <span style="color: red;">*</span></label>
       <select id="unidade" required>
         <option value="" disabled selected>Selecione a unidade</option>
         <option value="kg">Kg</option>
@@ -154,29 +234,37 @@
     </div>
 
     <div class="form-group">
-      <label for="quantidade">Quantidade:</label>
-      <input type="number" id="quantidade" required>
+      <label for="quantidade">Quantidade <span style="color: red;">*</span></label>
+      <input type="number" id="quantidade" step="0.01" min="0.01" required>
       <i class="fas fa-cubes icon"></i>
     </div>
 
     <div class="form-group">
-      <label for="preco">Preço (R$):</label>
-      <input type="number" id="preco" step="0.01" required>
+      <label for="preco">Preço Unitário (R$) <span style="color: red;">*</span></label>
+      <input type="number" id="preco" step="0.01" min="0" required>
       <i class="fas fa-dollar-sign icon"></i>
     </div>
 
     <div class="form-group">
-      <label for="validade">Validade (se houver):</label>
+      <label for="validade">Validade (se houver)</label>
       <input type="date" id="validade">
       <i class="fas fa-calendar-alt icon"></i>
     </div>
 
-    <button type="button" class="submit" onclick="salvarProduto()">Cadastrar Produto</button>
+    <!-- Campo de localização será adicionado dinamicamente pelo JS -->
+
+    <button type="submit" class="submit">
+      <i class="fas fa-check-circle"></i> Cadastrar Produto/Lote
+    </button>
+
+    <!-- Área de lotes existentes será preenchida dinamicamente -->
+    <div id="lotesExistentes"></div>
   </form>
 
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="JS/sistema-lotes-core.js"></script>
-  <script src="JS/cadprodu.js"></script>
+  <script src="JS/sistema-lotes-core.js"></script>
+  <script src="JS/cadprodu-integrado.js"></script>
   <script src="../js/pwa-register.js"></script>
 
 </body>
